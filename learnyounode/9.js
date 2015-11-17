@@ -9,20 +9,20 @@ var array = [];
 var size = 0;
 
 var print = function () {
-	for (var i = 0; i < array.length; i++) 
-		console.log(array[i]);
+  for (var i = 0; i < array.length; i++) 
+    console.log(array[i]);
 }
 
 var getResponse = function (i) {
-	http.get(process.argv[2 + i], function (response) {
-		response.pipe(bl(function (err, data) { 
-			if (err) return console.log(err);
-			array[i] = data.toString();
-			size++;
-			if (size ==3) print();
-		}));
-	});
+  http.get(process.argv[2 + i], function (response) {
+    response.pipe(bl(function (err, data) { 
+      if (err) return console.log(err);
+      array[i] = data.toString();
+      size++;
+      if (size ==3) print();
+    }));
+  });
 }
 
 for (var i = 0; i < 3; i++) 
-	getResponse(i);
+  getResponse(i);
