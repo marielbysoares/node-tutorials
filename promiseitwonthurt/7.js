@@ -1,0 +1,8 @@
+/*
+ * Promise It Won't Hurt - Exercise #7 (using_qfcall)
+ * By: Marielby Soares
+ */
+var q = require('q');
+
+q.fcall(JSON.parse, process.argv[2])
+.then(null, console.log)
